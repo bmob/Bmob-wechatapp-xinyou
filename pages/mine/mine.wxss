@@ -1,0 +1,145 @@
+page {
+  background: #fff;
+  padding: 0 80rpx 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+page .mine_box {
+  height: 100%;
+  width: 100%;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/22/b6476d9540a5b4e1807e2f23434bd4e6.png) no-repeat center center;
+  background-size: 100% auto;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+}
+
+.user_show {
+  padding-top: 86rpx;
+}
+
+.user_show image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  margin: 0 auto;
+  display: block;
+}
+
+.user_show text {
+  font-size: 32rpx;
+  color: #1e1e1e;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  padding-top: 20rpx;
+  padding-bottom: 70rpx;
+}
+
+.operations view, .operations navigator {
+  display: block;
+  width: 400rpx;
+  margin: 0 auto;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #646464;
+  border-top: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+  margin-top: -1rpx;
+  font-size: 32rpx;
+}
+
+@keyframes myfirst {
+  from {
+    bottom: -56px;
+  }
+
+  to {
+    bottom: 0;
+  }
+}
+
+.modify_nick {
+  position: fixed;
+  z-index: 2;
+  background: #f0f0f0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 104rpx;
+  margin-left: -50%;
+  border: 2rpx solid #ccc;
+  box-sizing: border-box;
+  animation: myfirst 0.2s;
+}
+
+.modify_nick button {
+  position: absolute;
+  left: 0px;
+  top: 10rpx;
+  padding: 0;
+  font-size: 16px;
+  height: 72rpx;
+  width: 120rpx;
+  border: 0px;
+  background: none;
+  line-height: 72rpx;
+}
+
+.modify_nick button::after {
+  border: 0 none;
+}
+
+.modify_nick input {
+  background: #fff;
+  height: 72rpx;
+  margin-top: 15rpx;
+  line-height: 72rpx;
+  width: 80%;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-left: 30rpx;
+}
+
+.modify_nick .modify_nick_yes {
+  left: auto;
+  right: 0px;
+}
+
+.modify_nick_layer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #000;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.operations .unread {
+  position: relative;
+}
+
+.operations .unread view {
+  content: "";
+  display: block;
+  position: absolute;
+  padding: 0;
+
+  background: #be925c;
+  border-radius: 100%;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  border: 0 none;
+  width:15rpx;
+  height:15rpx;
+  right:148rpx;
+  top:46rpx;
+}
+

@@ -1,0 +1,363 @@
+page {
+  position: relative;
+  background: #f2f2f2;
+  padding-bottom: 80rpx;
+}
+
+.content_detail, .comment_list {
+  overflow: hidden;
+  background: #fafafa;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.conent_user image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 6rpx;
+}
+
+.conent_user view {
+  color: #1e1e1e;
+}
+
+.list_header view {
+  float: left;
+  line-height: 80rpx;
+}
+
+.list_header  .list_header_right {
+  float: right;
+}
+
+.list_header {
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  font-size: 12px;
+  color: #666;
+}
+
+.listPic {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.listContent {
+  line-height: 18px;
+  margin-bottom: 20rpx;
+  font-size: 14px;
+  padding-top: 15rpx;
+}
+
+.listTitle {
+  text-align: center;
+  line-height: 64rpx;
+  font-size: 18px;
+  color: #1e1e1e;
+  padding-top: 15rpx;
+}
+
+.detail_footer {
+  overflow: hidden;
+  color: #a8a8a8;
+}
+
+.detail_footer .content_header_right {
+  float: left;
+  margin-top: 25rpx;
+}
+
+.content_footer {
+  float: right;
+  overflow: hidden;
+  height: 60rpx;
+  line-height: 82rpx;
+}
+
+.content_footer view {
+  float: left;
+  padding-left: 44rpx;
+  padding-right: 16rpx;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/6352c4c94000a31f80930e2126b5087b.png) no-repeat left 18rpx;
+  background-size: 44rpx auto;
+}
+
+.content_footer .commNum {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/19/bacf864040f3043d80b186e5af144b1c.png);
+}
+
+.content_footer .agree_1 {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/923ac0c5402d0f8c805354d897b749d5.png);
+  color: #c0935b;
+}
+
+.conent_user {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999;
+}
+
+.conent_user view {
+  font-size: 12px;
+}
+
+@keyframes myfirst {
+  from {
+    bottom: -320rpx;
+  }
+
+  to {
+    bottom: 0px;
+  }
+}
+
+.toComment {
+  width: 100%;
+  height: 104rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding-top: 8rpx;
+}
+
+.toComment input, .comment_box input {
+  background: #fff;
+  height: 72rpx;
+  margin-top: 15rpx;
+  line-height: 72rpx;
+  width: 80%;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-left: 30rpx;
+}
+
+.toComment input {
+  background: #f0f0f0;
+}
+
+.toComment button, .comment_box button {
+  position: absolute;
+  right: 0px;
+  top: 24rpx;
+  padding: 0;
+  font-size: 16px;
+  height: 72rpx;
+  width: 120rpx;
+  border: 0px;
+  background: none;
+  line-height: 72rpx;
+  border: 0 none;
+}
+
+.toComment button::after, .comment_box button::after {
+  border: 0 none;
+}
+
+.comment_box button {
+  top: 15rpx;
+  right: 5rpx;
+}
+
+.comment_layer, .Response_layer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #000;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.toComment .comments {
+  float: left;
+  height: 64rpx;
+  width: 75%;
+  margin-left: 30rpx;
+  line-height: 64rpx;
+  color: #ccc;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+  font-size: 12px;
+  text-indent: 1em;
+}
+
+.comment_box {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  background: #f0f0f0;
+  box-sizing: border-box;
+  animation: myfirst 0.2s;
+  height: 104rpx;
+  padding-top: 3rpx;
+}
+
+.comment_list .list_header image {
+  width: 60rpx;
+  height: 60rpx;
+  float: left;
+  margin-right: 8rpx;
+  border-radius: 30rpx;
+}
+
+.comment_list .list_header view {
+  line-height: 60rpx;
+  color: #a8a8a8;
+}
+
+.comment_list .list_header .list_header_left view {
+  color: #666;
+}
+
+.comment_list .comment_content, .comment_child_box .comment_content {
+  font-size: 14px;
+  line-height: 36rpx;
+  padding-left: 70rpx;
+}
+
+.comment_content view {
+  float: left;
+}
+
+.comment_content {
+  color: #1e1e1e;
+}
+
+.response_comment {
+  padding-right: 8rpx;
+}
+
+.response_comment .float_none {
+  color: #bf925c;
+}
+
+.toRespone {
+  font-size: 12px;
+  color: #bf925c;
+  float: right;
+}
+
+.comment_list .list {
+  padding: 10rpx 0;
+  overflow: hidden;
+  border-bottom: 1rpx solid #eaeaea;
+}
+
+/*操作*/
+
+.operation_box {
+  overflow: hidden;
+}
+
+.operation {
+  display: flex;
+  width: 63px;
+  height: 24px;
+  float: right;
+}
+
+.operation view {
+  flex: 1;
+  margin: 0 4px;
+  background: red;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/20/92a0376d4087b0c980f5e4cdbc310556.png) no-repeat;
+  background-size: 26px auto;
+}
+
+.operation .mail {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/62ba7e2740c3deb280f471f9ee05e96e.png);
+}
+
+.operation .write {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/23/4dd6b75f40e2699e801fb9a1b414e460.png);
+}
+
+.operation .public_true {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/6d6340cb40a942238030fda466142a26.png);
+}
+
+/*工具类*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.image_layer {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  overflow: scroll;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  text-align: center;
+  animation: fadeIn 0.3s;
+  padding-bottom: 28px;
+}
+
+.image_layer image {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image_layer .btn_box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+}
+
+.image_layer .btn_box view {
+  flex: 1;
+  text-align: right;
+  margin: 0 100rpx;
+  margin-top: 3px;
+}
+
+.image_layer .btn_box .close {
+  text-align: left;
+}
+
+.image_layer view button {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/23/3ce6a3f74067786080a5943f750a3ce3.png) no-repeat center center;
+  background-size: 100% auto;
+}
+
+.image_layer .btn_box .close button {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/23/5790e798401ac8de8003175b01dc359c.png);
+}
+
+.image_layer .btn_box .close button::after {
+  border: 0 none;
+}
+
+.font_grap {
+  color: #a8a8a8;
+}

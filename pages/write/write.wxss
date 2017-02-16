@@ -1,0 +1,14 @@
+.add_pic{padding:0 40rpx;padding-bottom:20rpx;background:#fff;margin-top:10rpx;margin-bottom:10rpx;}
+.add_pic view{display:inline-block;margin-top:20rpx;width:400rpx;height:200rpx;line-height:200rpx;text-align:center;background:url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/23/95953c8b40f0d089800ebec438581cc4.png) no-repeat left center;background-size:160rpx auto;padding-left: 80rpx;color: #b2b2b2;}
+.image_box{width:100%;background:#fff;margin-top:20rpx;margin-bottom:20rpx;padding:10px 40rpx 10rpx;}
+.add_title,.addConent{padding:8rpx 30rpx;color:#646464;background:#fff;}
+.add_title{border-bottom:1px solid #EAEAEA;height:88rpx;}
+.addConent textarea{width:100%;height:200rpx;}
+.addConent{padding-top:30rpx;height:200rpx;overflow:hidden;margin-bottom:30rpx;}
+label{color:#a0a0a0;padding-left:40rpx;}
+label text{padding-left:10rpx;}
+button{width:400rpx;height:80rpx;line-height:80rpx;text-align:center;font-size:16px;border:0 none;background:#BE925C;color:#fff;margin:30rpx auto}
+.picPre{width:50%;margin:0 auto;position:relative;box-sizing:border-box;}
+.picPre image{width:100%;height:180rpx;}
+.picPre view{position: absolute;right:0px;top:-20rpx;width:15px;height:15px;background:url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/23/23e708d8401db28080a47d384712f765.png) no-repeat;background-size: cover;}
+.hidden{display:none;}

@@ -1,0 +1,117 @@
+page {
+  background: #ebebeb;
+}
+
+.index_list {
+  color: #666;
+  padding-top: 20rpx;
+}
+
+navigator {
+  background: #fff;
+  margin-bottom: 30rpx;
+  padding: 40rpx 40rpx;
+  overflow: hidden;
+  border-bottom: 1px solid #ededee;
+  border-top: 1px solid #ededee;
+}
+
+.list_header_left image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 10rpx;
+  float: left;
+  border-radius: 40rpx;
+  overflow: hidden;
+}
+
+.list_header view {
+  float: left;
+  line-height: 80rpx;
+  color: #1e1e1e;
+  font-size: 16px;
+}
+
+.list_header  .list_header_right {
+  float: right;
+  color: #999;
+  font-size: 12px;
+}
+
+.list_header {
+  padding-bottom: 18rpx;
+  overflow: hidden;
+}
+
+.listPic {
+  width: 100%;
+  height: 360rpx;
+  margin-bottom: 16rpx;
+}
+
+.listTitle {
+  font-size: 18px;
+  color: #1e1e1e;
+  margin-bottom: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.listContent {
+  line-height: 19px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #646464;
+  font-size: 16px;
+  margin-bottom: 16rpx;
+  max-height: 36px;
+}
+
+.list_footer {
+  float: right;
+  overflow: hidden;
+  height: 60rpx;
+  line-height: 81rpx;
+  margin-top: -8px;
+}
+
+.list_footer view {
+  float: left;
+  padding-left: 44rpx;
+  padding-right: 16rpx;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/6352c4c94000a31f80930e2126b5087b.png) no-repeat left 18rpx;
+  background-size: 44rpx auto;
+  color: #999;
+}
+
+.list_footer .commNum {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/12/19/bacf864040f3043d80b186e5af144b1c.png);
+}
+
+.list_footer .agree_1 {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/923ac0c5402d0f8c805354d897b749d5.png);
+  color: #c0935b;
+}
+
+.loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #000;
+}
+.returnTop{
+  width:100rpx;
+  height: 100rpx;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2017/01/14/6bc44b6b40bde3ca803dca4dd101cba0.png) no-repeat;
+  padding: 0;
+  background-size: cover;
+  position: fixed;
+  right: 74rpx;
+  bottom: 100rpx;
+  border-bottom: 0;
+  border-top: 0;
+}
+/*.bord{height:1px;width:100%;position:fixed;bottom: 0;left:0;background:#ccc;}*/

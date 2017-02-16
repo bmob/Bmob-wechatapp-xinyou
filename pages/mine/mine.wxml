@@ -1,0 +1,28 @@
+<loading hidden="{{upImg}}">
+  头像上传中...
+</loading>
+<loading hidden="{{loading}}">
+  页面加载中...
+</loading>
+<view class="mine_box">
+  <view class="user_show">
+    <image mode="aspectFill" src="{{userImg}}"></image>
+    <text>{{inputValue}}</text>
+  </view>
+  <view class="operations">
+    <view bindtap="modifyImg">修改头像</view>
+    <view bindtap="modifyNick">修改昵称</view>
+    <!--<navigator url="../newList/newList" class="unread">
+      <view wx-if="{{remindscount>0}}"></view>消息
+    </navigator>-->
+    <!--<navigator url="../advise/advise">反馈建议</navigator>-->
+    <navigator url="../about/about">关于</navigator>
+  </view>
+  <view class="modify_nick_layer" wx:if="{{isModifyNick}}" bindtap="hiddenComment"></view>
+  <view class="modify_nick" wx:if="{{isModifyNick}}">
+    <form bindsubmit="modyfiNick" bindreset="formReset">
+      <input placeholder="请输入昵称" value="{{userName}}" bindinput="bindKeyInput" name="changeNick" />
+      <button class="modify_nick_yes" formType="submit" disabled="{{isdisabled}}" loading="{{modifyLoading}}">保存</button>
+    </form>
+  </view>
+</view>
