@@ -1,0 +1,10 @@
+<view class="topBox">
+  <image src="http://bmob-cdn-7744.b0.upaiyun.com/2016/12/27/17a316c140631cf780b1425c31a72431.png" mode="aspectFill"></image>
+  <text>v1.0.0</text>
+</view>
+<view class="bottomBox">
+  <view class="softHtp">
+    <navigator url="../protocol/protocol">软件许可协议</navigator>
+  </view>
+  <view>广州市比目网络科技有限公司 版权所有</view>
+</view>

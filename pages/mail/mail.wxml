@@ -1,0 +1,21 @@
+<loading hidden="{{loading}}">
+  加载中...
+</loading>
+<import src="../template/list.wxml" />
+<!--<scroll-view  lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight1}}px; width: {{windowWidth1}}px; " scroll-top="{{scrollTop.scroll_top1}}" bindscroll="scrollTopFun">-->
+<view class="index_list">
+  <navigator url="../listDetail/listDetail?moodId={{item.id}}" hover-class="navigator-hover" wx:for-items="{{moodList}}" wx:key="moodListId" wx:if="{{item.id}}">
+    <template is="listHeader" data="{{userPic:item.avatar,userNick:item.username,publishTime:item.created_at}}" />
+    <template is="listTemp" data="{{listPic:item.attachment,listTitle:item.title,listContent:item.content}}" />
+    <view class="list_footer">
+      <view class="agreeNum agree_{{item.is_liked}}">{{item.likes}}</view>
+      <view class="commNum">{{item.comments}}</view>
+    </view>
+  </navigator>
+</view>
+<!--</scroll-view>-->
+<view class="bord"></view>
+
+
+<view class="returnTop"  wx:if="{{scrollTop.goTop_show}}" catchtap="goTopFun">
+</view>

@@ -1,0 +1,59 @@
+<import src="../template/list.wxml" />
+<loading hidden="{{loading}}">
+  页面加载中...
+</loading>
+<view>
+  <view class="content_detail">
+    <view class="operation_box" wx:if="{{isMine}}">
+      <view class="operation">
+        <view bindtap="deleteThis">
+        </view>
+        <view class="mail public_{{isPublic}}" bindtap="publicThis">
+        </view>
+      </view>
+    </view>
+    <template is="listTemp" data="{{listPic:listPic,listTitle:listTitle,listContent:listContent}}" />
+    <view class="conent_user">
+      <image mode="aspectFill" src="{{userPic}}"></image>
+      <view>{{userNick}}</view>
+    </view>
+    <view class="detail_footer">
+      <view class="content_header_right">{{publishTime}}</view>
+      <view class="content_footer">
+        <view class="agreeNum agree_{{agree}}" bindtap="changeLike" data-liked="{{agree}}">{{agreeNum}}</view>
+        <view class="commNum" bindtap="changeComment">{{commNum}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="comment_list" wx-if="{{commentList.length>0}}">
+    <view class="list" wx:for="{{commentList}}" wx:key="commentId" data-commentId="{{item.id}}" bindtap="toResponse" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">
+      <view class="list_header" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">
+        <view class="list_header_left" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">
+          <image mode="aspectFill" src="{{item.avatar}}" wx:if="{{item.avatar}}" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}"></image>
+          <view data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">{{item.username}}</view>
+        </view>
+        <view class="list_header_right" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">{{item.created_at}}</view>
+      </view>
+      <view class="comment_content" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">
+        <view wx:if="{{item.pid!=0}}" class="response_comment" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">
+          <view data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">回复</view>
+          <view class="float_none" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">{{item.pusername}}</view>:</view>
+        <text wx:if="{{item.content=='*******该内容已被屏蔽********'}}" class="font_grap" data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">{{item.content}}</text>
+        <text wx:else data-commentId="{{item.id}}" data-id="{{item.id}}" data-uid="{{item.uid}}" data-name="{{item.username}}">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="Response_layer" wx:if="{{isToResponse}}" bindtap="hiddenResponse"></view>
+<view class="comment_box" wx:if="{{isToResponse}}">
+  <form bindsubmit="publishComment">
+    <input placeholder="{{plaContent}}" name="commContent" value="{{responeContent}}" />
+    <button type="default" hover-class="other-button-hover" formType="submit" disabled="{{isdisabled}}" loading="{{commentLoading}}"> 发送 </button>
+  </form>
+</view>
+<view class="toComment" wx:if="{{!isToResponse}}">
+  <form bindsubmit="publishComment">
+    <input placeholder="回复心情：" name="commContent" bindinput="bindKeyInput" value="{{publishContent}}" focus="{{autoFo}}" bindfocus="changeFocus" />
+    <button class="default" formType="submit" disabled="{{isdisabled}}" loading="{{commentLoading}}">发送</button>
+  </form>
+</view>

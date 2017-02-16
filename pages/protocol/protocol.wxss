@@ -1,0 +1,5 @@
+page{padding:30rpx 40rpx;box-sizing:border-box;font-size:14px;}
+.title{font-size:16px;color:#000;padding:15px 0px;}
+.txt1{padding-bottom:30rpx;}
+.txt2{padding-left:30rpx;}
+.txt3{padding-left:60rpx;}

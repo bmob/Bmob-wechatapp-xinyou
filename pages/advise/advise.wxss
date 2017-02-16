@@ -1,0 +1,28 @@
+page {
+  background: #ebebeb;
+}
+
+textarea {
+  background: white;
+  width: 100%;
+  height: 400rpx;
+  padding: 30rpx 40rpx;
+  line-height: 52rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+
+page .form_submit {
+  width: 400rpx;
+  height: 88rpx;
+  background: #be925c;
+  margin: 0 auto;
+  display: block;
+  color: #fff;
+  margin-top: 40rpx;
+}
+
+.form_submit::after {
+  background: none;
+  border: 0;
+}

@@ -1,0 +1,50 @@
+page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 6px;
+  margin: 0 auto;
+  display: block;
+}
+
+.topBox {
+  left: 50%;
+  top: 50%;
+  margin-top: -250rpx;
+  margin-left: -100rpx;
+  position: absolute;
+  width: 200rpx;
+  height: 300rpx;
+  overflow: hidden;
+}
+
+text {
+  text-align: center;
+  display: block;
+  margin-top: 5px;
+}
+
+.bottomBox view {
+  text-align: center;
+  margin-bottom: 5px;
+  color: #a0a0a0;
+  font-size: 12px;
+}
+
+.softHtp navigator {
+  margin-top: 500rpx;
+  color: orangered;
+  margin-bottom: 5px;
+}
+
+.bottomBox {
+  position: absolute;
+  bottom: 50rpx;
+  left: 0;
+  width: 100%;
+}
