@@ -559,11 +559,11 @@ bindKeyInput:function(e){
   },
   onPullDownRefresh:function(){
     wx.stopPullDownRefresh()
+  },
+  seeBig:function(e){
+    wx.previewImage({
+      current: that.data.listPic, // 当前显示图片的http链接
+      urls: [ that.data.listPic] // 需要预览的图片http链接列表
+    })
   }
-  // seeBig:function(e){
-  //   wx.previewImage({
-  //     current: that.data.listPic, // 当前显示图片的http链接
-  //     urls: [ that.data.listPic] // 需要预览的图片http链接列表
-  //   })
-  // }
 })

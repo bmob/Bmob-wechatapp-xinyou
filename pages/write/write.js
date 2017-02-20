@@ -7,12 +7,12 @@ var that;
 Page({
   onLoad: function(options) {
       that=this;
-      this.setData({//初始化数据
+      that.setData({//初始化数据
         src:"",
         isSrc:false,
         title:"",
         content:"",
-        ishide:"1",
+        ishide:"0",
         autoFocus:true,
         isLoading:false,
         loading:false,
@@ -23,7 +23,6 @@ Page({
      wx.hideToast() 
   },
   onShow:function(){
-    
     var myInterval=setInterval(getReturn,500);
     function getReturn(){
       wx.getStorage({
@@ -63,7 +62,7 @@ Page({
     })
   },
   changePublic:function(e){//switch开关
-    
+    console.log(e.detail.value)
     if(e.detail.value==true){
       wx.showModal({
         title: '邮寄心情',
@@ -121,6 +120,7 @@ Page({
   },
   sendNewMood: function(e) {//保存心情
     //判断心情是否为空
+
     var content=e.target.dataset.content;
     var title=e.target.dataset.title;
     if(content==""){
