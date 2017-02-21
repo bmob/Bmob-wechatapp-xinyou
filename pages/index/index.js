@@ -27,10 +27,13 @@ Page({
   },
   onShow: function () {
     molist = new Array();
+    var myInterval = setInterval(getReturn, 500);
+    function getReturn() {
     wx.getStorage({
               key: 'user_id',
               success: function(ress) {
                   if(ress.data){
+                    clearInterval(myInterval)
                       var Diary = Bmob.Object.extend("Diary");
                       var query = new Bmob.Query(Diary);
                       var isme = new Bmob.User();
@@ -85,7 +88,7 @@ Page({
                   }
               }
             }) 
-
+    }
     wx.getSystemInfo({
       success: (res) => {
         that.setData({

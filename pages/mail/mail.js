@@ -26,60 +26,72 @@ Page({
   },
   onShow: function () {
     molist = new Array();
-    wx.getStorage({
-          key: 'user_id',
-          success: function(ress) {
-              if(ress.data){
-                  var Diary = Bmob.Object.extend("Diary");
-                  var query = new Bmob.Query(Diary);
-                  // query.limit(that.data.limit);
-                  // if(that.data.limit>6){
-                  //   query.skip(that.data.limit-2); 
-                  // }
-                  // else if(that.data.limit==6&&that.data.moodList.length>0){
-                  //   query.skip(that.data.limit); 
-                  // }
-                  query.equalTo("is_hide", "1");
-                  query.descending("createdAt");
-                  // 查询所有数据
-                  query.find({
-                    success: function(results) {
-                      that.setData({
-                          loading: true
-                        });
-                      for (var i = 0; i < results.length; i++) {
-                        var publisherId=results[i].get("publisher").id;
-                        var title=results[i].get("title");
-                        var content=results[i].get("content");
-                        var id=results[i].id;
-                        var createdAt=results[i].createdAt;
-                        var _url;
-                        var likeNum=results[i].get("likeNum");
-                        var commentNum=results[i].get("commentNum");
-                        var pic=results[i].get("pic");
-                        if(pic){
-                            _url=results[i].get("pic")._url;
-                        }
-                        else{
-                          _url=null;
-                        }
-                        that.likeQuery(results[i],publisherId,title,content,id,createdAt,_url,likeNum,commentNum)                       
-                      }
-                    },
-                    error: function(error) {
-                        common.dataLoading(error,"loading");
+    var myInterval = setInterval(getReturn, 500);
+    function getReturn() {
+      wx.getStorage({
+            key: 'user_id',
+            success: function(ress) {
+                if(ress.data){
+                  clearInterval(myInterval)
+                    var Diary = Bmob.Object.extend("Diary");
+                    var query = new Bmob.Query(Diary);
+                    // query.limit(that.data.limit);
+                    // if(that.data.limit>6){
+                    //   query.skip(that.data.limit-2); 
+                    // }
+                    // else if(that.data.limit==6&&that.data.moodList.length>0){
+                    //   query.skip(that.data.limit); 
+                    // }
+                    query.equalTo("is_hide", "1");
+                    query.descending("createdAt");
+                    // 查询所有数据
+                    query.find({
+                      success: function(results) {
                         that.setData({
-                          loading: true
-                        })
-                        console.log(error)
-                    }
-                  });
-                  
+                            loading: true
+                          });
+                        for (var i = 0; i < results.length; i++) {
+                          var publisherId=results[i].get("publisher").id;
+                          var title=results[i].get("title");
+                          var content=results[i].get("content");
+                          var id=results[i].id;
+                          var createdAt=results[i].createdAt;
+                          var _url;
+                          var likeNum=results[i].get("likeNum");
+                          var commentNum=results[i].get("commentNum");
+                          var pic=results[i].get("pic");
+                          if(pic){
+                              _url=results[i].get("pic")._url;
+                          }
+                          else{
+                            _url=null;
+                          }
+                          that.likeQuery(results[i],publisherId,title,content,id,createdAt,_url,likeNum,commentNum)                       
+                        }
+                      },
+                      error: function(error) {
+                          common.dataLoading(error,"loading");
+                          that.setData({
+                            loading: true
+                          })
+                          console.log(error)
+                      }
+                    });
+                    
+                }
+                
+              } ,
+              fail:function(error){
+                console.log("失败")
               }
-              
-            } 
-        })
 
+          })
+
+      }
+    
+    
+    
+    
     wx.getSystemInfo({
       success: (res) => {
         that.setData({
