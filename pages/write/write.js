@@ -144,6 +144,7 @@ Page({
               diary.set("publisher", me);
               diary.set("likeNum",0);
               diary.set("commentNum",0);
+              diary.set("liker",[]);
               if(that.data.isSrc==true){
                   var name=that.data.src;//上传的图片的别名
                   var file=new Bmob.File(name,that.data.src);

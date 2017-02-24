@@ -25,7 +25,7 @@ App({
                                   try {
                                       wx.setStorageSync('user_openid', user.get("userData").openid)
                                       wx.setStorageSync('user_id', user.id);
-                                      wx.setStorageSync('my_nick', user.get("username"))
+                                      wx.setStorageSync('my_nick', user.get("nickname"))
                                       wx.setStorageSync('my_username', user.get("username"))
                                       wx.setStorageSync('my_avatar', user.get("userPic"))
                                   } catch (e) {    
@@ -42,7 +42,6 @@ App({
                                         user.set("userData", userData);
                                         user.signUp(null, {
                                             success: function(results) {
-                                              console.log()
                                               console.log("注册成功!");
                                               try {//将返回的3rd_session储存到缓存
                                                 wx.setStorageSync('user_openid', results.get("userData").openid)

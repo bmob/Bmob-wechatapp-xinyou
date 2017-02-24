@@ -1701,8 +1701,8 @@
      */
         toJSON: function() {
             return {
-                __op: "Add",
-                objects: Bmob._encode(this.objects())
+                "__op": "Add",
+                "objects": Bmob._encode(this.objects())
             };
         },
 

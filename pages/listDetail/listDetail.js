@@ -15,7 +15,8 @@ Page({
       commentLoading:false,
       isdisabled1:false,
       recommentLoading:false,
-      commentList:[]
+      commentList:[],
+      agree:0
   },
   
   onLoad: function(options) {   
@@ -27,8 +28,7 @@ Page({
      wx.hideToast() 
      
   },
-  onShow: function() {
-     
+  onShow: function() {  
       var myInterval=setInterval(getReturn,500);
       function getReturn(){
           wx.getStorage({
@@ -39,6 +39,7 @@ Page({
                 var Diary = Bmob.Object.extend("Diary");
                 var query = new Bmob.Query(Diary);
                 query.equalTo("objectId", optionId);
+                query.include("publisher");
                 query.find({
                     success: function(result) {
                       var title=result[0].get("title");
@@ -47,10 +48,17 @@ Page({
                       var agreeNum=result[0].get("likeNum");
                       var commentNum=result[0].get("commentNum");
                       var ishide=result[0].get("is_hide");
+                      var liker=result[0].get("liker");
+                      var userNick=publisher.get("nickname");
                       var isPublic;
-                      that.getPushliserInfo(publisher.id);
-                      
+                      var userPic;
                       var url;
+                      if(publisher.get("userPic")){
+                          userPic=publisher.get("userPic");
+                      }
+                      else{
+                          userPic=null;
+                      }
                       if(result[0].get("pic")){
                         url=result[0].get("pic")._url;
                       }
@@ -75,12 +83,22 @@ Page({
                         agreeNum:agreeNum,
                         commNum:commentNum,
                         ishide:ishide,
-                        isPublic:isPublic
+                        isPublic:isPublic,
+                        userPic:userPic,
+                        userNick:userNick,
+                        loading: true
                       })
-                      that.setData({
-                          loading: true
-                      });
-                      that.likeQuery(result[0]);
+                      for(var i=0;i<liker.length;i++){
+                        var isLike=0;
+                        if(liker[i]==ress.data){
+                          isLike=1;
+                          that.setData({
+                            agree:isLike
+                          })
+                          break; 
+                        }
+                        
+                      }
                       that.commentQuery(result[0]);
 
                     },
@@ -105,6 +123,7 @@ Page({
       var Comments = Bmob.Object.extend("Comments");
       var queryComment = new Bmob.Query(Comments);
       queryComment.equalTo("mood", mood);
+      queryComment.include("publisher");
       queryComment.descending("createdAt");
       queryComment.find({
           success: function(result) {
@@ -115,6 +134,8 @@ Page({
               var content=result[i].get("content");
               var created_at=result[i].createdAt;
               var olderUserName;
+              var userPic=result[i].get("publisher").get("userPic");
+              var nickname=result[i].get("publisher").get("nickname");
               if(pid){
                 pid=pid.id;
                 olderUserName=result[i].get("olderUserName");
@@ -123,92 +144,22 @@ Page({
                 pid=0;
                 olderUserName="";
               }
-              that.commentUserQuery(id,pid,uid,content,created_at,olderUserName);
-
+              var jsonA;
+              jsonA='{"id":"'+id+'","content":"'+content+'","pid":"'+pid+'","uid":"'+uid+'","created_at":"'+created_at+'","pusername":"'+olderUserName+'","username":"'+nickname+'","avatar":"'+userPic+'"}'; 
+              var jsonB=JSON.parse(jsonA);
+              commentlist.push(jsonB)
+              that.setData({
+                commentList:commentlist,
+                loading: true
+              })
             }
           },
           error: function(error) {
-              // common.dataLoading(error,"loading");
+              common.dataLoading(error,"loading");
               console.log(error)
           }
         }); 
 
-  },
-  commentUserQuery:function(id,pid,uid,content,created_at,olderUserName){
-    var user = Bmob.Object.extend("_User");
-    //创建查询对象，入口参数是对象类的实例
-    var userquery = new Bmob.Query(user);
-    //查询单条数据，第一个参数是这条数据的objectId值
-    userquery.get(uid, {
-      success: function(result) {
-        var a;
-          a='{"id":"'+id+'","content":"'+content+'","pid":"'+pid+'","uid":"'+uid+'","created_at":"'+created_at+'","pusername":"'+olderUserName+'","username":"'+result.get("username")+'","avatar":"'+result.get("userPic")+'"}'; 
-        var b=JSON.parse(a);
-        commentlist.push(b)
-        that.setData({
-          commentList:commentlist,
-          loading: true
-        })
-      },
-      error: function(object, error) {
-        // 查询失败
-      }
-    });
-  },
-  likeQuery:function(mood){
-    wx.getStorage({
-        key: 'user_id',
-        success: function(ress) {
-            // 查询是否我是否点赞了
-            var likes = Bmob.Object.extend("Likes");
-            var likeQuery = new Bmob.Query(likes);
-            var isme = new Bmob.User();
-            isme.id=ress.data;
-            likeQuery.equalTo("praiser",isme);
-            likeQuery.equalTo("moodId",mood);
-            likeQuery.find({
-              success: function(likeData) {
-                  var isLike=0;
-                  if(likeData.length>0){
-                    isLike=1;
-                  }
-                 that.setData({
-                   agree:isLike
-                 })
-              },
-              error: function(error) {
-
-              }
-            });
-        }
-    })
-    
-  },
-  getPushliserInfo:function(userid){
-    var user = Bmob.Object.extend("_User");
-    //创建查询对象，入口参数是对象类的实例
-    var userquery = new Bmob.Query(user);
-    //查询单条数据，第一个参数是这条数据的objectId值
-    userquery.get(userid, {
-      success: function(result) {
-        var userNick=result.get("username");
-        var userPic_url;
-        var userPic=result.get("userPic");
-        if(userPic){
-            userPic_url=userPic;
-        }     
-        else{
-            userPic_url=null;
-        }
-        that.setData({
-          userPic:userPic_url,
-          userNick:userNick
-        })
-      },
-      error: function(object, error) {
-        // 查询失败
-      }
-    });
   },
   onShareAppMessage: function () {
     if(that.data.isPublic==true){
@@ -254,67 +205,34 @@ Page({
     wx.getStorage({
         key: 'user_id',
         success: function(ress) {
-            var Likes = Bmob.Object.extend("Likes");
-            var queryLike = new Bmob.Query(Likes);
             var Diary = Bmob.Object.extend("Diary");
-            var diary = new Diary();
-            diary.id=optionId;
-            var me = new Bmob.User();
-            me.id=ress.data;
-            queryLike.equalTo("moodId", diary);
-            queryLike.equalTo("praiser", me);
+            var queryLike = new Bmob.Query(Diary);
+            queryLike.equalTo("objectId", optionId);
             queryLike.find({
-              success: function(likeData) {
-                if(likeData.length<=0){
-                  var Likes_new = new Likes();
-                  Likes_new.set("moodId", diary);
-                  Likes_new.set("praiser", me);
-                  Likes_new.save(null, {
-                    success: function(res) {
-                      var queryDiary = new Bmob.Query(Diary);
-                          //查询单条数据，第一个参数是这条数据的objectId值
-                      queryDiary.get(optionId, {
-                        success: function(object) {
-                          object.set('likeNum',object.get("likeNum")+1);
-                          object.save();
-                        },
-                        error: function(object, error) {
-                          // 查询失败
-                        }
-                      });
-                    },
-                    error: function(gameScore, error) {
-                     
-                    }
-                  });
-                }
-                else if(likeData.length>0){
-                    likeData[0].destroy({
-                      success: function(myObject) {
-                        // 取消点赞成功
-                        
-                        //减少点赞的数量
-                          var queryDiary = new Bmob.Query(Diary);
-                          //查询单条数据，第一个参数是这条数据的objectId值
-                          queryDiary.get(optionId, {
-                            success: function(object) {
-                              object.set('likeNum',object.get("likeNum")-1);
-                              object.save();
-                            },
-                            error: function(object, error) {
-                              // 查询失败
-                            }
-                          });
-                      },
-                      error: function(myObject, error) {
-                        // 取消点赞失败
-                        common.dataLoading(res.data.error,"loading");
-                        console.log(error);
+              success: function(result) {
+                var likerArray=result[0].get("liker");
+                var isLiked=false;
+                if(likerArray.length>0){
+                    for(var i=0;i<likerArray.length;i++)
+                    {
+                      if(likerArray[i]==ress.data){
+                        likerArray.splice(i,1);
+                        isLiked=true;
+                        result[0].set('likeNum',result[0].get("likeNum")-1);
+                        break;
                       }
-                    });
+                    }
+                    if(isLiked==false){
+
+                      likerArray.push(ress.data);
+                      result[0].set('likeNum',result[0].get("likeNum")+1);
+                    }
                 }
-                
-                
+                else{
+                  likerArray.push(ress.data);
+                  result[0].set('likeNum',result[0].get("likeNum")+1);
+                }
+                result[0].save();
               },
               error: function(error) {
 
@@ -430,7 +348,6 @@ Page({
       // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
       query.get(optionId, {
           success: function(mood) {
-            console.log(mood.id);
             // 回调中可以取得这个 GameScore 对象的一个实例，然后就可以修改它了
             mood.set('is_hide', hide);
             mood.save();
@@ -480,8 +397,6 @@ publishComment:function(e){//评论心情
             queryUser.get(ress.data, {
               success: function(userObject) {
                 // 查询成功，调用get方法获取对应属性的值
-                
-                
                 var Comments = Bmob.Object.extend("Comments");
                 var comment = new Comments();       
                 var Diary = Bmob.Object.extend("Diary");
