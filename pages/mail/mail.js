@@ -4,7 +4,7 @@ var common = require('../template/getCode.js')
 var app = getApp()
 var Bmob=require("../../utils/bmob.js");
 var that;
-var molist;
+var molist= new Array();
 Page({
   data: {
     moodList: [],
@@ -25,7 +25,7 @@ Page({
 
   },
   onShow: function () {
-    molist = new Array();
+    // molist = new Array();
     var myInterval = setInterval(getReturn, 500);
     function getReturn() {
       wx.getStorage({
@@ -34,7 +34,17 @@ Page({
                 if(ress.data){
                   clearInterval(myInterval)
                     var Diary = Bmob.Object.extend("Diary");
-                    var query = new Bmob.Query(Diary);    
+                    var query = new Bmob.Query(Diary); 
+                    if(that.data.limit==6){
+                      query.limit(that.data.limit); 
+                    }
+                    
+                    if(that.data.limit>6){
+                      query.limit(2); 
+                      query.skip(that.data.limit-2);
+                      console.log(that.data.limit)
+                    }  
+                    
                     query.equalTo("is_hide", "1");
                     query.descending("createdAt");
                     query.include("publisher");
@@ -108,14 +118,14 @@ Page({
     
     
     
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     that.setData({
-    //       windowHeight1: res.windowHeight,
-    //       windowWidth1: res.windowWidth
-    //     })
-    //   }
-    // })
+    wx.getSystemInfo({
+      success: (res) => {
+        that.setData({
+          windowHeight1: res.windowHeight,
+          windowWidth1: res.windowWidth
+        })
+      }
+    })
   },
   onShareAppMessage: function () {
     return {
@@ -124,13 +134,14 @@ Page({
       path: '/pages/index/index'
     }
   },
-  // pullUpLoad: function (e) {
-  //   var limit = this.data.limit + 2
-  //   this.setData({
-  //     limit: limit
-  //   })
-  //   this.onShow()
-  // },
+  pullUpLoad: function (e) {
+    var limit = that.data.limit + 2
+    // console.log("")
+    that.setData({
+      limit: limit
+    })
+    that.onShow()
+  },
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh()
   },

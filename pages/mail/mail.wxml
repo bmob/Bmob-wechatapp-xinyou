@@ -2,7 +2,7 @@
   加载中...
 </loading>
 <import src="../template/list.wxml" />
-<!--<scroll-view  lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight1}}px; width: {{windowWidth1}}px; " scroll-top="{{scrollTop.scroll_top1}}" bindscroll="scrollTopFun">-->
+<scroll-view  lower-threshold="1" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight1}}px; width: {{windowWidth1}}px; " scroll-top="{{scrollTop.scroll_top1}}" bindscroll="scrollTopFun">
 <view class="index_list">
   <navigator url="../listDetail/listDetail?moodId={{item.id}}" hover-class="navigator-hover" wx:for-items="{{moodList}}" wx:key="moodListId" wx:if="{{item.id}}">
     <template is="listHeader" data="{{userPic:item.avatar,userNick:item.username,publishTime:item.created_at}}" />
@@ -13,7 +13,7 @@
     </view>
   </navigator>
 </view>
-<!--</scroll-view>-->
+</scroll-view>
 <view class="bord"></view>
 
 

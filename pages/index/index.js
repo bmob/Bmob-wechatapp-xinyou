@@ -4,7 +4,7 @@ var app = getApp()
 var common = require('../template/getCode.js')
 var Bmob=require("../../utils/bmob.js");
 var that;
-var molist;
+var molist= new Array();
 Page({
   data: {
     moodList: [],
@@ -24,7 +24,6 @@ Page({
 
   },
   onShow: function () {
-    molist = new Array();
     var myInterval = setInterval(getReturn, 500);
     function getReturn() {
     wx.getStorage({
@@ -37,6 +36,15 @@ Page({
                       var isme = new Bmob.User();
                       isme.id=ress.data;
                       query.equalTo("publisher", isme);
+                      if(that.data.limit==6){
+                        query.limit(that.data.limit); 
+                      }
+                      
+                      if(that.data.limit>6){
+                        query.limit(2); 
+                        query.skip(that.data.limit-2);
+                        console.log(that.data.limit)
+                      }  
                       query.descending("createdAt");
                       query.find({
                         success: function(results) {
@@ -94,13 +102,13 @@ Page({
   onUnload: function (event) {
 
   },
-  // pullUpLoad: function (e) {
-  //   var limit = this.data.limit + 2
-  //   that.setData({
-  //     limit: limit
-  //   })
-  //   this.onShow()
-  // },
+  pullUpLoad: function (e) {
+    var limit = this.data.limit + 2
+    that.setData({
+      limit: limit
+    })
+    this.onShow()
+  },
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh()
   }
