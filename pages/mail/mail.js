@@ -8,7 +8,7 @@ var molist= new Array();
 Page({
   data: {
     moodList: [],
-    limit: 6,
+    limit: 3,
     loading: false,
     windowHeight1: 0,
     windowWidth1: 0,
@@ -35,11 +35,11 @@ Page({
                   clearInterval(myInterval)
                     var Diary = Bmob.Object.extend("Diary");
                     var query = new Bmob.Query(Diary); 
-                    if(that.data.limit==6){
+                    if(that.data.limit==3){
                       query.limit(that.data.limit); 
                     }
                     
-                    if(that.data.limit>6){
+                    if(that.data.limit>3){
                       query.limit(2); 
                       query.skip(that.data.limit-2);
                       console.log(that.data.limit)
@@ -82,13 +82,35 @@ Page({
                           }                                             
                           var jsonA;
                           if(pic){
-                            jsonA='{"title":"'+title+'","content":"'+content+'","id":"'+id+'","avatar":"'+userPic+'","created_at":"'+createdAt+'","attachment":"'+_url+'","likes":"'+likeNum+'","comments":"'+commentNum+'","is_liked":"'+isLike+'","username":"'+name+'"}'
+                             jsonA = {
+                              "title" : title || '' ,
+                              "content" : content || '',
+                              "id" : id || '' ,
+                              "avatar" : userPic || '',
+                                "created_at": createdAt || '',
+                                "attachment":  _url || '',
+                                  "likes" : likeNum,
+                                  "comments" : commentNum ,
+                                  "is_liked" :  isLike || '',
+                                    "username" : name || ''
+                            }
                           }
                           else{
-                            jsonA='{"title":"'+title+'","content":"'+content+'","id":"'+id+'","avatar":"'+userPic+'","created_at":"'+createdAt+'","likes":"'+likeNum+'","comments":"'+commentNum+'","is_liked":"'+isLike+'","username":"'+name+'"}';
+                             jsonA = {
+                              "title" : title || '' ,
+                              "content" : content || '',
+                              "id" : id || '' ,
+                              "avatar" : userPic || '',
+                                "created_at": createdAt || '',
+                                "attachment":  _url || '',
+                                  "likes" : likeNum ,
+                                  "comments" : commentNum,
+                                  "is_liked" :  isLike || '',
+                                    "username" : name || ''
+                            }
                           }
-                          var jsonB=JSON.parse(jsonA);
-                          molist.push(jsonB)
+                          // var jsonB=JSON.parse(jsonA);
+                          molist.push(jsonA)
                           that.setData({
                             moodList:molist,
                             loading: true
@@ -138,12 +160,21 @@ Page({
     var limit = that.data.limit + 2
     // console.log("")
     that.setData({
-      limit: limit
+      limit: limit,
+      loading: false
     })
     that.onShow()
   },
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
+    wx.stopPullDownRefresh();
+    var context = this;
+    var pictures = this.data.pictures;
+    pictures.unshift(pictures[Math.round(Math.random()*10%(pictures.length))]);
+    setTimeout(function(){
+      context.setData({
+        pictures:pictures
+      })
+    },2000)
   },
   scrollTopFun: function(e){   
     if(e.detail.scrollTop > 300){
