@@ -1,6 +1,7 @@
 <loading hidden="{{loading}}">
   页面初始化中...
 </loading>
+<form bindsubmit="sendNewMood" >
     <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
         <view>添加图片（选）</view>
     </view>
@@ -11,12 +12,13 @@
         </view>
     </view>
     
-    <input placeholder="输入标题（选）"  class="add_title" value="" bindinput="setTitle"/>
+    <input placeholder="输入标题（选）"  class="add_title" value="" bindinput="setTitle" name="title"/>
     <view  class="addConent">
-        <textarea  placeholder="记下这一刻的心情" maxlength="1000"  value="" bindblur="setContent"/>
+        <textarea  placeholder="记下这一刻的心情" maxlength="1000"  value="" name="content"/>
     </view>
     <label for="changePublic">
         <switch checked="{{isPublic}}" bindchange="changePublic" type="checkbox" name="is_hide"/>
         <text>邮寄心情</text>
     </label>
-    <button bindtap="sendNewMood" data-content="{{content}}" loading="{{isLoading}}" data-title="{{title}}" hover-start-time="200" disabled="{{isdisabled}}">发布</button>
+    <button loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发布</button>
+    </form>

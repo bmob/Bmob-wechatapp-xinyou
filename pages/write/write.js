@@ -10,12 +10,10 @@ Page({
       that.setData({//初始化数据
         src:"",
         isSrc:false,
-        title:"",
-        content:"",
         ishide:"0",
         autoFocus:true,
         isLoading:false,
-        loading:false,
+        loading:true,
         isdisabled:false
       })
   },
@@ -34,8 +32,6 @@ Page({
                 loading:true
             })
           }
-          
-
         } 
       })
     }
@@ -108,21 +104,14 @@ Page({
       
     }
   },
-  setContent:function(e){//心情内容
-    that.setData({
-      content:e.detail.value
-    }) 
-  },
-  setTitle:function(e){
-    that.setData({
-      title:e.detail.value
-    }) 
-  },
   sendNewMood: function(e) {//保存心情
     //判断心情是否为空
 
-    var content=e.target.dataset.content;
-    var title=e.target.dataset.title;
+    var content = e.detail.value.content;
+    var title = e.detail.value.title;
+
+    console.log(content)
+
     if(content==""){
       common.dataLoading("心情内容不能为空","loading");
     }
