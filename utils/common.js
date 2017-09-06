@@ -6,4 +6,16 @@ function dataLoading(txt,icon,fun){
     success:fun
   })
 }
+function showModal(c,t,fun) {
+    if(!t)
+        t='提示'
+    wx.showModal({
+        title: t,
+        content: c,
+        showCancel:false,
+        success: fun
+    })
+}
+
+module.exports.showModal = showModal;
 module.exports.dataLoading = dataLoading;
