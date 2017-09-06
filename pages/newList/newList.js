@@ -65,7 +65,7 @@ Page({
 
   },
   onShow: function () {
-    this.onLoad();
+    // this.onLoad();
   },
 
 

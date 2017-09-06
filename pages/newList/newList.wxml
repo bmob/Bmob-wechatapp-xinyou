@@ -1,36 +1,36 @@
 <loading hidden="{{loading}}">
   加载中...
 </loading>
-<scroll-view class="list_box" lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px; width: {{windowWidth}}px; ">
-  <view class="list" wx:for-items="{{newList}}" wx:key="newListId" bindtap="toSeeDetail" data-id="{{item.id}}" data-fid="{{item.fid}}">
-    <view class="list_left" data-id="{{item.id}}" data-fid="{{item.fid}}">
-      <image mode="aspectFill" src="{{item.avatar}}" wx:if="{{item.avatar!=''&&item.behavior!=7&&item.behavior!=6&&item.behavior!=5}}" data-id="{{item.id}}" data-fid="{{item.fid}}"></image>
-      <image mode="aspectFill" src="http://bmob-cdn-7744.b0.upaiyun.com/2016/12/27/17a316c140631cf780b1425c31a72431.png" wx:else data-id="{{item.id}}" data-fid="{{item.fid}}"></image>
+<scroll-view class="list_box" lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="">
+  <view class="list" wx:for-items="{{newList}}" wx:key="newListId" bindtap="toSeeDetail" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+    <view class="list_left" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+      <image mode="aspectFill" src="{{item.avatar}}" wx:if="{{item.avatar!=''&&item.behavior!=7&&item.behavior!=6&&item.behavior!=5}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}"></image>
+      <image mode="aspectFill" src="http://bmob-cdn-7744.b0.upaiyun.com/2016/12/27/17a316c140631cf780b1425c31a72431.png" wx:else data-id="{{item.objectId}}" data-wid="{{item.wid}}"></image>
     </view>
-    <view class="list_right" data-id="{{item.id}}" data-fid="{{item.fid}}">
-      <view class="list_right_top" data-id="{{item.id}}" data-fid="{{item.fid}}">
-        <view wx:if="{{item.username!=null}}" data-id="{{item.id}}" data-fid="{{item.fid}}">{{item.username}}</view>
-        <view wx:else data-id="{{item.id}}" data-fid="{{item.fid}}">心邮管理员</view>
-        <view class="nvg nvg_{{item.is_read}}" data-id="{{item.id}}" data-fid="{{item.fid}}">
-          <text wx:if="{{item.behavior==1}}" data-id="{{item.id}}" data-fid="{{item.fid}}">查看详情</text>
-          <text wx:elif="{{item.behavior==2}}" data-id="{{item.id}}" data-fid="{{item.fid}}">查看详情</text>
-          <text wx:elif="{{item.behavior==3}}" data-id="{{item.id}}" data-fid="{{item.fid}}">回复</text>
-          <text wx:elif="{{item.behavior==4}}" data-id="{{item.id}}" data-fid="{{item.fid}}">回复</text>
-          <text wx:elif="{{item.behavior==5}}" data-id="{{item.id}}" data-fid="{{item.fid}}">心情被屏蔽</text>
-          <text wx:elif="{{item.behavior==6}}" data-id="{{item.id}}" data-fid="{{item.fid}}">评论被屏蔽</text>
-          <text wx:elif="{{item.behavior==7}}" data-id="{{item.id}}" data-fid="{{item.fid}}">反馈回复</text>
+    <view class="list_right" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+      <view class="list_right_top" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+        <view wx:if="{{item.username!=null}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">{{item.username}}</view>
+        <view wx:else data-id="{{item.objectId}}" data-wid="{{item.wid}}">心邮管理员</view>
+        <view class="nvg nvg_{{item.is_read}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+          <text wx:if="{{item.behavior==1}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">查看详情</text>
+          <text wx:elif="{{item.behavior==2}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">查看详情</text>
+          <text wx:elif="{{item.behavior==3}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">回复</text>
+          <text wx:elif="{{item.behavior==4}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">回复</text>
+          <text wx:elif="{{item.behavior==5}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">心情被屏蔽</text>
+          <text wx:elif="{{item.behavior==6}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">评论被屏蔽</text>
+          <text wx:elif="{{item.behavior==7}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">反馈回复</text>
         </view>
       </view>
-      <view class="op_type" data-id="{{item.id}}" data-fid="{{item.fid}}">
-        <text wx:if="{{item.behavior==1}}" data-id="{{item.id}}" data-fid="{{item.fid}}">点赞了你的心情</text>
-        <text wx:elif="{{item.behavior==2}}" data-id="{{item.id}}" data-fid="{{item.fid}}">取消了点赞</text>
-        <text wx:elif="{{item.behavior==3}}" data-id="{{item.id}}" data-fid="{{item.fid}}">评论了你的心情</text>
-        <text wx:elif="{{item.behavior==4}}" data-id="{{item.id}}" data-fid="{{item.fid}}">回复了你的评论</text>
-        <text wx:elif="{{item.behavior==5}}" data-id="{{item.id}}" data-fid="{{item.fid}}">屏蔽原因：{{item.extra}}</text>
-        <text wx:elif="{{item.behavior==6}}" data-id="{{item.id}}" data-fid="{{item.fid}}">屏蔽原因：{{item.extra}}</text>
-        <text wx:elif="{{item.behavior==7}}" data-id="{{item.id}}" data-fid="{{item.fid}}">{{item.extra}}</text>
+      <view class="op_type" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
+        <text wx:if="{{item.behavior==1}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">点赞了你的心情</text>
+        <text wx:elif="{{item.behavior==2}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">取消了点赞</text>
+        <text wx:elif="{{item.behavior==3}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">评论了你的心情</text>
+        <text wx:elif="{{item.behavior==4}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">回复了你的评论</text>
+        <text wx:elif="{{item.behavior==5}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">屏蔽原因：{{item.extra}}</text>
+        <text wx:elif="{{item.behavior==6}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">屏蔽原因：{{item.extra}}</text>
+        <text wx:elif="{{item.behavior==7}}" data-id="{{item.objectId}}" data-wid="{{item.wid}}">{{item.extra}}</text>
       </view>
-      <view class="time" data-id="{{item.id}}" data-fid="{{item.fid}}">
+      <view class="time" data-id="{{item.objectId}}" data-wid="{{item.wid}}">
         {{item.created_at}}
       </view>
     </view>
