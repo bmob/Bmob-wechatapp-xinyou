@@ -8,10 +8,17 @@ App({
     try {
       var value = wx.getStorageSync('user_openid')
       if (value) {
-      }
-      else{
-        wx.login({
+      }else{
+       console.log("执行login")
+       wx.login({
+         success: function (res) {
+           if (res.code) {
+             console.log("执行login", res)
+           }
+         }});
+       wx.login({
             success: function(res) {
+              console.log('res', res)
               if (res.code) {
                   Bmob.User.requestOpenId(res.code, {
                     success: function(userData) { 
@@ -74,11 +81,14 @@ App({
               } else {
                 console.log('获取用户登录态失败！' + res.errMsg)
               }
+            },
+            complete:function(e){
+              console.log('获取用户登录态失败！' + e)
             }
           });
       }
     } catch (e) {
-      
+      console.log("登陆失败")
     }
     wx.checkSession({
       success: function(){

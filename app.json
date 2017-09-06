@@ -6,6 +6,7 @@
     "pages/listDetail/listDetail",
     "pages/mine/mine",
     "pages/advise/advise",
+    "pages/index1/index1",
     "pages/write/write",
     "pages/newList/newList",
     "pages/protocol/protocol",
@@ -18,7 +19,7 @@
     "navigationBarBackgroundColor": "#FEFEFE",
     "navigationBarTextStyle":"black",
     "navigationBarTitleText": "信箱",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "backgroundColor":"#FAFAFA",

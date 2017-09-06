@@ -10,12 +10,14 @@
     <text>{{inputValue}}</text>
   </view>
   <view class="operations">
+  <navigator url="../index1/index1">我的发布</navigator>
     <view bindtap="modifyImg">修改头像</view>
     <view bindtap="modifyNick">修改昵称</view>
-    <!--<navigator url="../newList/newList" class="unread">
-      <view wx-if="{{remindscount>0}}"></view>消息
-    </navigator>-->
-    <!--<navigator url="../advise/advise">反馈建议</navigator>-->
+
+    <navigator url="../newList/newList" class="unread">
+      <view wx-if="{{remindscount>0}}">{{remindscount}}</view>消息
+    </navigator>
+
     <navigator url="../about/about">关于</navigator>
   </view>
   <view class="modify_nick_layer" wx:if="{{isModifyNick}}" bindtap="hiddenComment"></view>

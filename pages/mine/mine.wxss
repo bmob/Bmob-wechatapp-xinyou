@@ -128,18 +128,18 @@ page .mine_box {
   content: "";
   display: block;
   position: absolute;
-  padding: 0;
+  padding: 10;
 
   background: #be925c;
   border-radius: 100%;
-  line-height: 20px;
+  line-height: 30px;
   text-align: center;
   color: #fff;
   font-size: 13px;
   border: 0 none;
-  width:15rpx;
-  height:15rpx;
-  right:148rpx;
-  top:46rpx;
+  width:60rpx;
+  height:60rpx;
+  right:108rpx;
+  top:16rpx;
 }
 

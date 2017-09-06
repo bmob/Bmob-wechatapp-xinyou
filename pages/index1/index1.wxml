@@ -1,0 +1,20 @@
+<import src="../template/list.wxml" />
+<!--<loading hidden="{{loading}}">
+  加载中...
+</loading>-->
+<scroll-view class="index_list" lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px; width: {{windowWidth}}px; ">
+<!--<view class="index_list">-->
+  <navigator url="../listDetail/listDetail?moodId={{item.id}}" hover-class="navigator-hover" wx:for-items="{{moodList}}" wx:key="moodListId">
+    <template is="listTemp" data="{{listPic:item.attachment,listTitle:item.title,listContent:item.content}}" />
+    <view class="mylist_footer">
+      <view class="mylist_footer_left">{{item.created_at}}</view>
+      <view class="mail mail_{{item.status}}"></view>
+    </view>
+  </navigator>
+</scroll-view>
+<!--</view>-->
+<text class="noData" wx:if="{{moodList.length<=0}}">
+  你还没有记录心情， 快点写下这一刻心情吧
+</text>
+<navigator class="toWrite" url="../write/write">
+</navigator>

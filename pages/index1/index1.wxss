@@ -1,0 +1,52 @@
+@import "../mail/mail.wxss";
+
+.mylist_footer {
+  color: #999;
+  line-height: 64rpx;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.mylist_footer .mylist_footer_left {
+  float: left;
+}
+
+.mylist_footer .mail {
+  float: right;
+  width: 44rpx;
+  height: 44rpx;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/6d6340cb40a942238030fda466142a26.png) no-repeat;
+  background-size: 50rpx auto;
+  margin-top: 6rpx;
+}
+
+.mylist_footer .mail_0 {
+  background-image: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/62ba7e2740c3deb280f471f9ee05e96e.png);
+}
+
+.toWrite {
+  width: 100rpx;
+  height: 100rpx;
+  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/360d32564024a5ab80e4477169949473.png) no-repeat;
+  padding: 0;
+  background-size: cover;
+  position: fixed;
+  right: 74rpx;
+  bottom: 100rpx;
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.noData {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 30%;
+  margin-top: -20rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 26px;
+  color: #b5b5b5;
+}
