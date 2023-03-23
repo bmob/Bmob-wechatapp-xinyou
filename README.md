@@ -31,7 +31,7 @@
 使用步骤：
 ####第一步：创建项目，记得填入你自己的AppId(必须填入AppId，不然无法调用wx.login())。
 ####第二步：下载该demo。
-####第三步：在微信小程序管理后台中配置服务器域名为https://api.bmob.cn。
+####第三步：在微信小程序管理后台中配置服务器域名为https://api.bmobapp.com。
 ####第四步：在Bmob后台创建应用，将你的AppID(小程序ID)和AppSecret(小程序密钥)填写到Bmob的微信小程序配置密钥中。
 ####第五步：将你的Application ID和REST API Key替换app.js中的Bmob.initialize("e3cecf75da3d8316729ee905e81f5ac1", "adf78f7709798f97d6bb9aef6a7624ad")。
 ####第六步：创建表和字段：
